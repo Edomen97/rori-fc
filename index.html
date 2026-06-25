@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rori Hotel Football Health Team</title>
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-blue: #0f1e36;
+            --secondary-blue: #1d3557;
+            --accent-gold: #f4b400;
+            --light-bg: #f8f9fa;
+            --dark-text: #2d3748;
+            --light-text: #ffffff;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background-color: var(--primary-blue);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--light-text);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .register-btn-nav {
+            background-color: var(--accent-gold);
+            color: var(--primary-blue) !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-weight: bold !important;
+            transition: transform 0.2s;
+        }
+
+        .register-btn-nav:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(15, 30, 54, 0.85), rgba(29, 53, 87, 0.9)), 
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920') no-repeat center center/cover;
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            padding: 0 1rem;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 0.8rem 2.5rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(244, 180, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* --- SECTION STRUCTURE --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- VISION & MISSION --- */
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .vm-card {
+            background-color: var(--light-text);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-left: 6px solid var(--primary-blue);
+        }
+
+        .vm-card.mission-card {
+            border-left: 6px solid var(--accent-gold);
+        }
+
+        .vm-card h3 {
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .vm-card p {
+            color: #5a6578;
+            font-size: 1.05rem;
+        }
+
+        .amharic-text {
+            display: block;
+            font-size: 0.95rem;
+            color: #8892b0;
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
+        /* --- OBJECTIVES --- */
+        .objectives {
+            background-color: #f0f4f8;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .obj-card {
+            background-color: var(--light-text);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+        }
+
+        .obj-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .obj-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .obj-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- RULES & CONSTITUTION --- */
+        .rules-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light-text);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .rule-item:last-child {
+            border-bottom: none;
+        }
+
+        .rule-icon {
+            background-color: #fff3cd;
+            color: #856404;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .rule-text h5 {
+            font-size: 1.15rem;
+            color: var(--secondary-blue);
+        }
+
+        /* --- REGISTRATION FORM --- */
+        .registration-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--light-text);
+        }
+
+        .registration-section .section-title {
+            color: var(--light-text);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--light-text);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .form-container form {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--dark-text);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background-color: #e0a300;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b1526;
+            color: #a0aec0;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.95rem;
+        }
+
+        footer p span {
+            color: var(--light-text);
+            font-weight: 600;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .vision-mission-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 4rem 5%;
+            }
+            .form-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="navbar">
+            <div class="logo">RORI HOTEL <span>FC</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#vision">Vision & Mission</a></li>
+                <li><a href="#objectives">Objectives</a></li>
+                <li><a href="#rules">Rules</a></li>
+                <li><a href="#register" class="register-btn-nav">Join Club</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Rori Hotel Football Health Team</h1>
+            <p>የሮሪ ሆቴል እግር ኳስ ጤና ቡድን</p>
+            <p>Fostering physical fitness, exceptional discipline, and shared community values from Hawassa to the global stage.</p>
+            <a href="#register" class="cta-button">Register Now / አሁኑኑ ይመዝገቡ</a>
+        </div>
+    </section>
+
+    <!-- VISION & MISSION -->
+    <section id="vision">
+        <h2 class="section-title">Our Vision & Mission</h2>
+        <div class="vision-mission-grid">
+            <div class="vm-card">
+                <h3>👁️ Vision</h3>
+                <p>To showcase Hawassa’s vibrant health, wellness, and sports ecosystem to Ethiopia, Africa, and the global arena, while raising an exemplary, fit, and active generation.</p>
+                <span class="amharic-text">ከተማችን ሀዋሳን በስፖርትና በጤና ዘርፍ ለኢትዮጵያ፣ ለአፍሪካ ብሎም ለዓለም ማሳየት እና ለሀገር የሚጠቅም ጤናማ ትውልድ ማፍራት።</span>
+            </div>
+            <div class="vm-card mission-card">
+                <h3>🚀 Mission</h3>
+                <p>Building disciplined, physically robust citizens who uphold high moral ethics, encouraging professional experience-sharing platforms among cross-city hotels, and empowering individual athletes to advance academically, financially, and occupationally.</p>
+                <span class="amharic-text">አባላት በትሬይኒንግ ሰዓት በመገኘት፣ እርስ በራስ በመከባበር እና ኢትዮጵያዊ ስብእናቸውን ጠብቀው ብቁ እንዲሆኑ ማድረግ፤ እንዲሁም የሆቴሎች እርስ በርስ ልምድ ልውውጥን ማጠናከር።</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBJECTIVES -->
+    <section id="objectives" class="objectives">
+        <h2 class="section-title">Club Objectives</h2>
+        <div class="objectives-grid">
+            <div class="obj-card">
+                <div class="obj-number">01</div>
+                <h4>Physical Fitness & Health</h4>
+                <p>Promoting regular physical exercise, well-being, and a highly active lifestyle for all club members.</p>
+            </div>
+            <div class="obj-card">
+                <div class="obj-number">02</div>
+                <h4>Professional Growth</h4>
+                <p>Encouraging athletes to continuously transform their lives through structural focus on education, personal financial literacy, and secure job placements.</p>
+            </div>
+            <div class="obj-card">
+                <div class="obj-number">03</div>
+                <h4>Hotel Network Collaboration</h4>
+                <p>Establishing collaborative platforms for localized hotels to interact, form robust networks, and engage in modern workflow experience exchanges.</p>
+            </div>
+            <div class="obj-card">
+                <div class="obj-number">04</div>
+                <h4>Generational Impact</h4>
+                <p>Molding a physically sound, capable, and highly ethical generation ready to serve and bring immense value to our country.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES & CONSTITUTION -->
+    <section id="rules">
+        <h2 class="section-title">Club Constitution & Rules</h2>
+        <div class="rules-container">
+            <div class="rule-item">
+                <div class="rule-icon">✓</div>
+                <div class="rule-text">
+                    <h5>Absolute Punctuality (በሰዓቱ መገኘት)</h5>
+                    <p>All members must strictly report on time for designated training blocks. Tardiness directly compromises team efficiency.</p>
+                </div>
+            </div>
+            <div class="rule-item">
+                <div class="rule-icon">✓</div>
+                <div class="rule-text">
+                    <h5>Mutual Respect (እርስ በራስ መከባበር)</h5>
+                    <p>Fostering mutual honor, deep professional respect, and harmony remains mandatory among all participating athletes, staff, and leadership.</p>
+                </div>
+            </div>
+            <div class="rule-item">
+                <div class="rule-icon">✓</div>
+                <div class="rule-text">
+                    <h5>Upholding Ethiopian Character (ኢትዮጵያዊ ስብዕና)</h5>
+                    <p>Every member serves as an ambassador, bound to reflect foundational Ethiopian cultural ethics, dignity, and sportsmanship both on and off the playing field.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION FORM -->
+    <section id="register" class="registration-section">
+        <h2 class="section-title">Membership Registration</h2>
+        <div class="form-container">
+            <form action="#" method="POST" onsubmit="alert('Thank you for registering with Rori Hotel Football Health Team!'); return false;">
+                <div class="form-group">
+                    <label for="fullname">Full Name / ሙሉ ስም</label>
+                    <input type="text" id="fullname" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age / እድሜ</label>
+                    <input type="number" id="age" required min="16" max="60" placeholder="Enter your age">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number / ስልክ ቁጥር</label>
+                    <input type="tel" id="phone" required placeholder="e.g. +251 9...">
+                </div>
+                <div class="form-group">
+                    <label for="affiliation">Hotel / Organization Affiliation (የሚሰሩበት ሆቴል ወይም ተቋም)</label>
+                    <input type="text" id="affiliation" required placeholder="e.g. Rori Hotel">
+                </div>
+                <button type="submit" class="submit-btn">Submit Application / ማመልከቻ አስገባ</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 <span>Rori Hotel Football Health Team</span>. Built for Health, Success & Community. Hawassa, Ethiopia.</p>
+    </footer>
+
+</body>
+</html>
