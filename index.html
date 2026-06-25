@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rori Hotel Football Health Team</title>
+    <title>Rori Hotel Football Club</title>
+    <!-- FontAwesome Icons for Premium Look -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- RESET & GLOBAL STYLES --- */
+        /* --- GLOBAL STYLES & VARIABLES --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -19,56 +21,70 @@
             --secondary-blue: #1d3557;
             --accent-gold: #f4b400;
             --light-bg: #f8f9fa;
+            --white: #ffffff;
             --dark-text: #2d3748;
-            --light-text: #ffffff;
-            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --gray-text: #718096;
         }
 
         body {
             background-color: var(--light-bg);
             color: var(--dark-text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- NAVBAR --- */
+        /* --- NAVIGATION NAVBAR --- */
         header {
             background-color: var(--primary-blue);
-            padding: 1rem 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0.6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .logo {
-            color: var(--light-text);
-            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 1px;
         }
 
-        .logo span {
-            color: var(--accent-gold);
+        .logo span { color: var(--accent-gold); margin-left: 5px; }
+        
+        .logo img {
+            height: 55px;
+            width: auto;
+            margin-right: 12px;
+            border-radius: 4px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .nav-links a {
-            color: var(--light-text);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.2rem;
         }
 
         .nav-links a:hover {
@@ -78,441 +94,577 @@
         .register-btn-nav {
             background-color: var(--accent-gold);
             color: var(--primary-blue) !important;
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 25px;
             font-weight: bold !important;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 10px rgba(244,180,0,0.2);
         }
 
-        .register-btn-nav:hover {
-            transform: scale(1.05);
+        .menu-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO BANNER --- */
         .hero {
-            background: linear-gradient(rgba(15, 30, 54, 0.85), rgba(29, 53, 87, 0.9)), 
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920') no-repeat center center/cover;
-            height: 85vh;
+            background: linear-gradient(rgba(15, 30, 54, 0.8), rgba(29, 53, 87, 0.8)), url('1000055434.png') no-repeat center center/cover;
+            height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            color: var(--light-text);
+            color: var(--white);
             padding: 0 1rem;
-            margin-top: 60px;
+            padding-top: 80px;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+            font-size: 3.5rem;
+            font-weight: 800;
             letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
-        .hero-content p {
-            font-size: 1.25rem;
+        .hero-content h2 {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-motto {
+            font-style: italic;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
+            opacity: 0.9;
         }
 
         .cta-button {
             background-color: var(--accent-gold);
             color: var(--primary-blue);
-            padding: 0.8rem 2.5rem;
+            padding: 0.9rem 2.5rem;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: bold;
             border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(244, 180, 0, 0.4);
+            font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(244, 180, 0, 0.4);
             transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .cta-button:hover {
-            background-color: #fff;
-            color: var(--primary-blue);
             transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(244, 180, 0, 0.6);
         }
 
-        /* --- SECTION STRUCTURE --- */
+        /* --- SECTION COMMONS --- */
         section {
-            padding: 5rem 10%;
+            padding: 5rem 8%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary-blue);
-            margin-bottom: 3rem;
-            position: relative;
-            text-transform: uppercase;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-gold);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* --- VISION & MISSION --- */
-        .vision-mission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .vm-card {
-            background-color: var(--light-text);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-            border-left: 6px solid var(--primary-blue);
-        }
-
-        .vm-card.mission-card {
-            border-left: 6px solid var(--accent-gold);
-        }
-
-        .vm-card h3 {
-            font-size: 1.6rem;
+            font-size: 2.5rem;
             color: var(--primary-blue);
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-weight: 700;
         }
 
-        .vm-card p {
-            color: #5a6578;
-            font-size: 1.05rem;
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-text);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
         }
 
-        .amharic-text {
-            display: block;
-            font-size: 0.95rem;
-            color: #8892b0;
-            margin-top: 0.8rem;
-            font-style: italic;
+        .bg-dark-blue {
+            background-color: #0b172a;
+            color: var(--white);
+            max-width: 100vw !important;
         }
 
-        /* --- OBJECTIVES --- */
-        .objectives {
-            background-color: #f0f4f8;
-        }
+        .bg-dark-blue .section-title { color: var(--white); }
 
-        .objectives-grid {
+        /* --- VISION & MISSION GRID --- */
+        .vm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
-        .obj-card {
-            background-color: var(--light-text);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--card-shadow);
+        .vm-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
             transition: transform 0.3s;
+            border-top: 5px solid var(--accent-gold);
         }
 
-        .obj-card:hover {
-            transform: translateY(-5px);
-        }
+        .vm-card:hover { transform: translateY(-5px); }
 
-        .obj-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .obj-card h4 {
-            font-size: 1.2rem;
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- RULES & CONSTITUTION --- */
-        .rules-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--light-text);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .rule-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .rule-item:last-child {
-            border-bottom: none;
-        }
-
-        .rule-icon {
-            background-color: #fff3cd;
-            color: #856404;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .rule-text h5 {
-            font-size: 1.15rem;
+        .vm-card i {
+            font-size: 2.5rem;
             color: var(--secondary-blue);
-        }
-
-        /* --- REGISTRATION FORM --- */
-        .registration-section {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: var(--light-text);
-        }
-
-        .registration-section .section-title {
-            color: var(--light-text);
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--light-text);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .form-container form {
-            display: block;
-        }
-
-        .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
-            display: block;
-            color: var(--dark-text);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+        .vm-card h3 { margin-bottom: 1rem; color: var(--primary-blue); font-size: 1.4rem; }
+        .vm-card ul { list-style: none; text-align: left; max-width: max-content; margin: 0 auto; }
+        .vm-card ul li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; }
+        .vm-card ul li::before { content: "✓"; color: var(--accent-gold); position: absolute; left: 0; font-weight: bold; }
+
+        /* --- NEWS & ANNOUNCEMENTS --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 6px;
-            font-size: 1rem;
-            color: var(--dark-text);
-            transition: border-color 0.3s;
+        .news-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-gold);
+        .news-tag {
+            background: var(--secondary-blue);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1.5rem 1.5rem 0 1.5rem;
+            border-radius: 4px;
         }
 
-        .submit-btn {
-            width: 100%;
-            background-color: var(--accent-gold);
-            color: var(--primary-blue);
-            border: none;
-            padding: 1rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .news-card h3 { padding: 0.5rem 1.5rem; font-size: 1.2rem; color: var(--primary-blue); }
+        .news-card p { padding: 0 1.5rem 1.5rem 1.5rem; color: var(--gray-text); font-size: 0.95rem; }
+
+        /* --- VIDEOS SECTION --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .submit-btn:hover {
-            background-color: #e0a300;
+        .video-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: #0b1526;
-            color: #a0aec0;
-            text-align: center;
+        .video-box i { font-size: 3rem; color: var(--accent-gold); cursor: pointer; transition: transform 0.3s; }
+        .video-box i:hover { transform: scale(1.1); }
+        .video-caption { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.7); padding: 0.5rem 1rem; font-size: 0.9rem; text-align: center; }
+
+        /* --- MATCHES & SCHEDULE --- */
+        .match-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .match-card, .schedule-card {
+            background: var(--white);
             padding: 2rem;
-            font-size: 0.95rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        footer p span {
-            color: var(--light-text);
-            font-weight: 600;
+        .match-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
+        .match-row:last-child { border-bottom: none; }
+        .team-vs { font-weight: bold; color: var(--primary-blue); }
+        .match-status { background: #e2e8f0; padding: 0.2rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: bold; }
+
+        /* --- TEAMS & STAFF --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .staff-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--secondary-blue);
+        }
+
+        .staff-card i { font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 1rem; }
+        .staff-card h3 { color: var(--primary-blue); margin-bottom: 0.3rem; }
+        .staff-card p { color: var(--gray-text); font-weight: 600; font-size: 0.9rem; }
+
+        /* --- CLUB RULES --- */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .rule-item {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .rule-item h4 { color: var(--accent-gold); margin-bottom: 0.5rem; }
+        .rule-item p { color: #cbd5e1; font-size: 0.95rem; }
+
+        /* --- CLUB SHOP --- */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .product-card i { font-size: 4rem; color: var(--primary-blue); margin-bottom: 1rem; }
+        .product-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .shop-btn { background: var(--primary-blue); color: var(--white); padding: 0.4rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; display: inline-block; margin-top: 0.5rem; }
+
+        /* --- CONTACT & FOOTER --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 4rem 5% 2rem 5%;
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-box h3 { color: var(--accent-gold); margin-bottom: 1.5rem; font-size: 1.3rem; }
+        .footer-box p, .footer-box a { color: #e2e8f0; text-decoration: none; margin-bottom: 0.8rem; display: block; }
+        .footer-box i { margin-right: 10px; color: var(--accent-gold); }
+        .social-icons a { display: inline-block; margin-right: 15px; font-size: 1.5rem; }
+        .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #cbd5e1; }
+
+        /* --- RESPONSIVE MOBILE DESIGN --- */
+        @media (max-width: 968px) {
+            .menu-toggle { display: block; }
             .nav-links {
-                display: none;
-            }
-            .vision-mission-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            section {
-                padding: 4rem 5%;
-            }
-            .form-container {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--primary-blue);
+                width: 100%;
                 padding: 2rem;
+                gap: 1.5rem;
+                transition: all 0.4s ease;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             }
+            .nav-links.active { left: 0; }
+            .match-container { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content h2 { font-size: 1.3rem; }
+            section { padding: 4rem 5%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR HEADER -->
     <header>
-  <div class="navbar">
-    <a href="#" class="logo">
-      <img src="logo.png" alt="Rori FC Logo" style="height: 50px; width: auto; vertical-align: middle;">
-    </a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#vision">Vision & Mission</a></li>
-      <li><a href="#objectives">Objectives</a></li>
-      <li><a href="#rules">Rules</a></li>
-      <li><a href="#register" class="register-btn-nav">Join Club</a></li>
-    </ul>
-  </div>
-</header>
+        <div class="navbar">
+            <a href="#" class="logo">
+                <img src="1000056332.jpg" alt="Rori Community FC Logo">
+                RORI HOTEL<span>FC</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#matches">Matches</a></li>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#rules">Rules</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="register-btn-nav">Join Club</a></li>
+            </ul>
+        </div>
+    </header>
 
-                
-               
-
-    <!-- HERO SECTION -->
+    <!-- MAIN HERO BANNER -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Rori Hotel Football Health Team</h1>
-            <p>የሮሪ ሆቴል እግር ኳስ ጤና ቡድን</p>
-            <p>Fostering physical fitness, exceptional discipline, and shared community values from Hawassa to the global stage.</p>
-            <a href="#register" class="cta-button">Register Now / አሁኑኑ ይመዝገቡ</a>
+            <h1>RORI HOTEL FOOTBALL CLUB</h1>
+            <h2>Building Talent, Inspiring Champions</h2>
+            <p class="hero-motto">"ተሰጥኦን እናበቃለን፤ ሻምፒዮኖችን እንፈጥራለን!" ⚽🏆</p>
+            <a href="#contact" class="cta-button">Register Now / አሁኑኑ ይመዝገቡ</a>
         </div>
     </section>
 
-    <!-- VISION & MISSION -->
+    <!-- VISION, MISSION, OBJECTIVES -->
     <section id="vision">
-        <h2 class="section-title">Our Vision & Mission</h2>
-        <div class="vision-mission-grid">
+        <h2 class="section-title">Club Philosophy & Direction</h2>
+        <p class="section-subtitle">የክለቡ ራዕይ፣ ተልዕኮ እና እሴቶች</p>
+        <div class="vm-grid">
             <div class="vm-card">
-                <h3>👁️ Vision</h3>
-                <p>To showcase Hawassa’s vibrant health, wellness, and sports ecosystem to Ethiopia, Africa, and the global arena, while raising an exemplary, fit, and active generation.</p>
-                <span class="amharic-text">ከተማችን ሀዋሳን በስፖርትና በጤና ዘርፍ ለኢትዮጵያ፣ ለአፍሪካ ብሎም ለዓለም ማሳየት እና ለሀገር የሚጠቅም ጤናማ ትውልድ ማፍራት።</span>
+                <i class="fas fa-eye"></i>
+                <h3>Vision / ራዕይ</h3>
+                <p>To become one of Ethiopia's and Africa's leading football development clubs, producing talented and disciplined players for national and international competition.</p>
+                <p style="margin-top:10px; font-weight:600; color:var(--secondary-blue);">በኢትዮጵያ እና በአፍሪካ ደረጃ ተወዳዳሪ፣ ተሰጥኦ ያላቸውን ወጣቶች የሚያበቃ ታዋቂ ክለብ መሆን።</p>
             </div>
-            <div class="vm-card mission-card">
-                <h3>🚀 Mission</h3>
-                <p>Building disciplined, physically robust citizens who uphold high moral ethics, encouraging professional experience-sharing platforms among cross-city hotels, and empowering individual athletes to advance academically, financially, and occupationally.</p>
-                <span class="amharic-text">አባላት በትሬይኒንግ ሰዓት በመገኘት፣ እርስ በራስ በመከባበር እና ኢትዮጵያዊ ስብእናቸውን ጠብቀው ብቁ እንዲሆኑ ማድረግ፤ እንዲሁም የሆቴሎች እርስ በርስ ልምድ ልውውጥን ማጠናከር።</span>
+            <div class="vm-card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Mission / ተልዕኮ</h3>
+                <p>Develop football talent, promote discipline and teamwork, support youth development, and represent the community with pride.</p>
+                <p style="margin-top:10px; font-weight:600; color:var(--secondary-blue);">የወጣቶችን ተሰጥኦ ማሳደግ፣ በስነ-ምግባር እና በቡድን ሥራ የተመሰረቱ ተጫዋቾችን ማፍራት።</p>
             </div>
-        </div>
-    </section>
-
-    <!-- OBJECTIVES -->
-    <section id="objectives" class="objectives">
-        <h2 class="section-title">Club Objectives</h2>
-        <div class="objectives-grid">
-            <div class="obj-card">
-                <div class="obj-number">01</div>
-                <h4>Physical Fitness & Health</h4>
-                <p>Promoting regular physical exercise, well-being, and a highly active lifestyle for all club members.</p>
-            </div>
-            <div class="obj-card">
-                <div class="obj-number">02</div>
-                <h4>Professional Growth</h4>
-                <p>Encouraging athletes to continuously transform their lives through structural focus on education, personal financial literacy, and secure job placements.</p>
-            </div>
-            <div class="obj-card">
-                <div class="obj-number">03</div>
-                <h4>Hotel Network Collaboration</h4>
-                <p>Establishing collaborative platforms for localized hotels to interact, form robust networks, and engage in modern workflow experience exchanges.</p>
-            </div>
-            <div class="obj-card">
-                <div class="obj-number">04</div>
-                <h4>Generational Impact</h4>
-                <p>Molding a physically sound, capable, and highly ethical generation ready to serve and bring immense value to our country.</p>
+            <div class="vm-card">
+                <i class="fas fa-tasks"></i>
+                <h3>Objectives / ዓላማ</h3>
+                <ul>
+                    <li>Train young talent yearly</li>
+                    <li>Compete nationally & regionally</li>
+                    <li>Improve player skills & fitness</li>
+                    <li>በክልልና ሀገር አቀፍ ውድድር መሳተፍ</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- RULES & CONSTITUTION -->
-    <section id="rules">
-        <h2 class="section-title">Club Constitution & Rules</h2>
-        <div class="rules-container">
+    <!-- LATEST NEWS -->
+    <section id="news" style="background-color: #f1f5f9; max-width:100vw;">
+        <div style="max-width:1400px; margin:0 auto; padding:0 3%;">
+            <h2 class="section-title">Latest News & Announcements</h2>
+            <p class="section-subtitle">ወቅታዊ መረጃዎች እና የክለቡ መግለጫዎች</p>
+            <div class="news-grid">
+                <div class="news-card">
+                    <span class="news-tag">Match Report</span>
+                    <h3>Sensational Victory in Recent Match</h3>
+                    <p>The senior team secured an exceptional win showcasing masterclass teamwork and intense stamina on the pitch.</p>
+                </div>
+                <div class="news-card">
+                    <span class="news-tag">Announcement</span>
+                    <h3>Youth Academy Trials Open (2026)</h3>
+                    <p>Rori Hotel FC is officially hosting open trials for U-15 and U-17 youth divisions starting next month.</p>
+                </div>
+                <div class="news-card">
+                    <span class="news-tag">Transfer News</span>
+                    <h3>New Coaching Staff Additions</h3>
+                    <p>The club has officially reinforced the strategic technical layout to support head coach Yedediya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATCHES & TRAINING SCHEDULE -->
+    <section id="matches">
+        <h2 class="section-title">Matches & Training</h2>
+        <p class="section-subtitle">የውድድር እና የልምምድ መርሃ ግብር</p>
+        <div class="match-container">
+            <div class="match-card">
+                <h3>Upcoming Fixtures & Results</h3>
+                <div class="match-row">
+                    <span class="team-vs">Rori Hotel FC vs Hawassa City Youth</span>
+                    <span class="match-status">This Saturday</span>
+                </div>
+                <div class="match-row">
+                    <span class="team-vs">Rori Hotel FC vs Regional Selection</span>
+                    <span class="match-status">Completed (W 3-1)</span>
+                </div>
+                <div class="match-row">
+                    <span class="team-vs">Rori Hotel FC U-17 vs Tula Youth</span>
+                    <span class="match-status">Next Tuesday</span>
+                </div>
+            </div>
+            <div class="schedule-card" style="border-left: 6px solid var(--accent-gold);">
+                <h3><i class="fas fa-calendar-alt" style="color:var(--accent-gold);"></i> Training Schedule</h3>
+                <p style="margin-top:1rem; font-weight:bold;">የልምምድ ሰዓት</p>
+                <p><strong style="color:var(--primary-blue);">Tuesday (ማክሰኞ):</strong> 12:00 PM – 2:30 PM</p>
+                <p><strong style="color:var(--primary-blue);">Saturday (ቅዳሜ):</strong> 12:00 PM – 2:30 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS MEDIA GALLERY -->
+    <section id="videos" class="bg-dark-blue">
+        <h2 class="section-title">Media & Video Highlights</h2>
+        <p class="section-subtitle" style="color:#cbd5e1;">የጨዋታ ትዕይንቶች እና ልዩ ቪዲዮዎች</p>
+        <div class="video-grid">
+            <div class="video-box">
+                <i class="fas fa-play-circle"></i>
+                <div class="video-caption">Match Highlights & Goals</div>
+            </div>
+            <div class="video-box">
+                <i class="fas fa-play-circle"></i>
+                <div class="video-caption">Training Sessions & Drills</div>
+            </div>
+            <div class="video-box">
+                <i class="fas fa-play-circle"></i>
+                <div class="video-caption">Player & Coach Interviews</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLUB TEAMS & MANAGEMENT -->
+    <section id="teams">
+        <h2 class="section-title">Our Teams & Leadership</h2>
+        <p class="section-subtitle">ተጫዋቾች እና የአሰልጣኞች ስብስብ</p>
+        <div class="team-grid">
+            <div class="staff-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Yedediya (የደዲያ)</h3>
+                <p>Head Coach / ዋና አሰልጣኝ</p>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-copyright"></i>
+                <h3>Bahilu (ባህሉ)</h3>
+                <p>Team Captain / ካፒቴን</p>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-users"></i>
+                <h3>Senior / Youth</h3>
+                <p>Senior, U-17 & U-15 Teams</p>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-hands-helper"></i>
+                <h3>Goalkeepers</h3>
+                <p>Specialized GK Squad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLUB REGULATIONS & RULES -->
+    <section id="rules" class="bg-dark-blue">
+        <h2 class="section-title">Club Rules & Regulations</h2>
+        <p class="section-subtitle" style="color:#cbd5e1;">የክለቡ መመሪያዎች እና የተጫዋቾች ስነ-ምግባር</p>
+        <div class="rules-grid">
             <div class="rule-item">
-                <div class="rule-icon">✓</div>
-                <div class="rule-text">
-                    <h5>Absolute Punctuality (በሰዓቱ መገኘት)</h5>
-                    <p>All members must strictly report on time for designated training blocks. Tardiness directly compromises team efficiency.</p>
-                </div>
+                <h4>1. Respect & Discipline (ክብር እና ዲሲፕሊን)</h4>
+                <p>Respect coaches, players, opponents, and officials at all times. No violence or misconduct. / የአሰልጣኞችን መመሪያ ማክበር ግዴታ ነው። ለቡድን አባላት እና ተቀናቃኞች ክብር ማሳየት።</p>
             </div>
             <div class="rule-item">
-                <div class="rule-icon">✓</div>
-                <div class="rule-text">
-                    <h5>Mutual Respect (እርስ በራስ መከባበር)</h5>
-                    <p>Fostering mutual honor, deep professional respect, and harmony remains mandatory among all participating athletes, staff, and leadership.</p>
-                </div>
+                <h4>2. Punctuality (ሰዓት ማክበር)</h4>
+                <p>Attend all training sessions and matches strictly on time. / ሁሉም ተጫዋቾች በሰዓታቸው ለልምምድ እና ለጨዋታ መገኘት አለባቸው።</p>
             </div>
             <div class="rule-item">
-                <div class="rule-icon">✓</div>
-                <div class="rule-text">
-                    <h5>Upholding Ethiopian Character (ኢትዮጵያዊ ስብዕና)</h5>
-                    <p>Every member serves as an ambassador, bound to reflect foundational Ethiopian cultural ethics, dignity, and sportsmanship both on and off the playing field.</p>
-                </div>
+                <h4>3. Club Property & Uniform (ንብረትና ስፖርት ልብስ)</h4>
+                <p>Wear proper club uniforms during sessions and protect all club properties responsibly. / የክለቡን የስፖርት ልብሶች በሚገባ መጠቀም እና የክለቡን ንብረት በኃላፊነት መጠበቅ።</p>
+            </div>
+            <div class="rule-item">
+                <h4>4. Integrity & Ambassador (ታማኝነትና ስብዕና)</h4>
+                <p>Maintain exceptional conduct on and off the field. Represent the club with high standards. / ከክለቡ ስም እና ክብር ጋር የሚጋጩ ተግባራትን ሙሉ በሙሉ ማስወገድ እና ጥሩ አምባሳደር መሆን።</p>
             </div>
         </div>
     </section>
 
-    <!-- REGISTRATION FORM -->
-    <section id="register" class="registration-section">
-        <h2 class="section-title">Membership Registration</h2>
-        <div class="form-container">
-            <form action="#" method="POST" onsubmit="alert('Thank you for registering with Rori Hotel Football Health Team!'); return false;">
-                <div class="form-group">
-                    <label for="fullname">Full Name / ሙሉ ስም</label>
-                    <input type="text" id="fullname" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="age">Age / እድሜ</label>
-                    <input type="number" id="age" required min="16" max="60" placeholder="Enter your age">
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number / ስልክ ቁጥር</label>
-                    <input type="tel" id="phone" required placeholder="e.g. +251 9...">
-                </div>
-                <div class="form-group">
-                    <label for="affiliation">Hotel / Organization Affiliation (የሚሰሩበት ሆቴል ወይም ተቋም)</label>
-                    <input type="text" id="affiliation" required placeholder="e.g. Rori Hotel">
-                </div>
-                <button type="submit" class="submit-btn">Submit Application / ማመልከቻ አስገባ</button>
-            </form>
+    <!-- CLUB MERCHANDISE SHOP -->
+    <section id="shop">
+        <h2 class="section-title">Official Club Merchandise</h2>
+        <p class="section-subtitle">የክለቡ መደብር - አልባሳት እና መጠቀሚያዎች</p>
+        <div class="shop-grid">
+            <div class="product-card">
+                <i class="fas fa-tshirt"></i>
+                <h3>Official Team Jersey</h3>
+                <a href="#contact" class="shop-btn">Order Now</a>
+            </div>
+            <div class="product-card">
+                <i class="fas fa-running"></i>
+                <h3>Training Kit</h3>
+                <a href="#contact" class="shop-btn">Order Now</a>
+            </div>
+            <div class="product-card">
+                <i class="fas fa-socks"></i>
+                <h3>Caps & Scarves</h3>
+                <a href="#contact" class="shop-btn">Order Now</a>
+            </div>
+            <div class="product-card">
+                <i class="fas fa-football-ball"></i>
+                <h3>Official Match Ball</h3>
+                <a href="#contact" class="shop-btn">Order Now</a>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 <span>Rori Hotel Football Health Team</span>. Built for Health, Success & Community. Hawassa, Ethiopia.</p>
+    <!-- CONTACT, SUPPORTERS & FOOTER -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-box">
+                <h3>About Rori Hotel FC</h3>
+                <p style="font-size:0.9rem; line-height:1.7;">Established in 2026 to develop young football talent, promote extreme discipline, teamwork, and create glorious opportunities for future international professional players.</p>
+                <p style="font-size:0.9rem; font-style:italic; color:var(--accent-gold);">Excellence, Discipline, Victory! 🏆</p>
+            </div>
+            <div class="footer-box">
+                <h3>Supporters & Joining</h3>
+                <a href="#contact"><i class="fas fa-user-plus"></i> Fan Club Registration</a>
+                <a href="#contact"><i class="fas fa-id-card"></i> Membership Programs</a>
+                <a href="#contact"><i class="fas fa-handshake"></i> Sponsors & Partners</a>
+                <a href="#contact"><i class="fas fa-heart"></i> Volunteer Opportunities & Donations</a>
+            </div>
+            <div class="footer-box">
+                <h3>Contact & Location</h3>
+                <p><i class="fas fa-phone"></i> +251 9XX XXX XXX</p>
+                <p><i class="fas fa-envelope"></i> info@rorihotelfc.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Hawassa, Sidama, Ethiopia</p>
+                <div class="social-icons" style="margin-top:1rem;">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Rori Hotel Football Club. Developed with Passion. All Rights Reserved.
+        </div>
     </footer>
 
+    <!-- INTERACTIVE MENU TOGGLE JAVASCRIPT -->
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
