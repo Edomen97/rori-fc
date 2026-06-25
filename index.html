@@ -671,5 +671,49 @@
             });
         });
     </script>
-</body>
+</body><section id="registration" style="padding: 2rem; background: #f9f9f9; border-radius: 10px; margin: 2rem auto; max-width: 600px; border: 2px solid #f4b400;">
+    <h2 style="color: #0f1e36; text-align: center;">Rori Hotel Football Club Registration</h2>
+    
+    <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+        
+        <h3 style="color: #0f1e36; border-bottom: 2px solid #0f1e36; margin-top: 1rem;">Player Registration</h3>
+        <label>Full Name:</label>
+        <input type="text" name="full_name" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc;">
+        
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        
+        <label>Gender:</label>
+        <select name="gender" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        
+        <label>Email:</label>
+        <input type="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+        <h3 style="color: #0f1e36; border-bottom: 2px solid #0f1e36; margin-top: 1rem;">Football Information</h3>
+        <label>Preferred Position:</label>
+        <select name="position" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="goalkeeper">Goalkeeper</option>
+            <option value="defender">Defender</option>
+            <option value="midfielder">Midfielder</option>
+            <option value="forward">Forward</option>
+        </select>
+
+        <label>Jersey Size:</label>
+        <select name="jersey_size" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option value="S">Small (S)</option>
+            <option value="M">Medium (M)</option>
+            <option value="L">Large (L)</option>
+            <option value="XL">Extra Large (XL)</option>
+        </select>
+
+        <button type="submit" style="width: 100%; padding: 15px; background: #0f1e36; color: white; border: none; cursor: pointer; font-size: 1.1rem; margin-top: 20px;">REGISTER NOW</button>
+    </form>
+</section>
+
 </html>
